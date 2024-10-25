@@ -45,7 +45,7 @@ if 'selected_option' not in st.session_state:
 st.markdown('<div class="horizontal-menu">', unsafe_allow_html=True)
 
 # Crear los botones de navegación
-col1, col2, col3, col4, col5, col6 = st.columns(6)
+col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 with col1:
     if st.button("INICIO"):
         st.session_state['selected_option'] = "Inicio"
@@ -64,6 +64,9 @@ with col5:
 with col6:
     if st.button("CURSOS Y TALLERES"):
         st.session_state['selected_option'] = "Cursos y talleres"
+with col7:
+    if st.button("HERRAMIENTAS DE DIAGNÓSTICO"):
+        st.session_state['selected_option'] = "Herramientas"
 
 st.markdown('</div>', unsafe_allow_html=True)
 
@@ -89,14 +92,25 @@ if st.session_state['selected_option'] == "Inicio":
         st.image("Proyectovidaimage.png", use_column_width="auto")
         st.subheader('''Programa de educación sociemocional "Proyecto de vida" ''')
         st.write("Se implementa en las escuelas públicas de México")
+        with st.expander("Ver más"):
+            html_code = """<iframe src="https://cremx.org/proyectodevida/" width="always" height="400"></iframe>"""
+            st.components.v1.html(html_code, height=400)
     with colum2:
         st.image("Vanguardiaimage.png", use_column_width="auto")
         st.subheader("Revista Vanguardia Educativa")
         st.write("Revista de edición trimestral con temas de actualidad en educación")
+        with st.expander("Ver más"):
+            html_code = """<iframe src="https://cremx.org/revistavanguardiaeducativa/" width="always" height="400"></iframe>"""
+            st.components.v1.html(html_code, height=400)
+            
     with colum3:
         st.image("Congreso.png", use_column_width="auto")
         st.subheader("Congreso Mundial de Educación")
         st.write("Foro anual de grandes líderes de la educación")
+        with st.expander("Ver Más"):
+            html_code = """<iframe src="https://cremx.org/congresomundialdeeducacion/" width="always" height="400"></iframe>"""
+            st.components.v1.html(html_code, height=400)
+            
     with st.container(border=True):
         
         ccolum1,ccolum2=st.columns(2,)
@@ -223,7 +237,13 @@ educación de calidad y logrando con ello el fortalecimiento del tejido social. 
                 capacidad de brindar una educación de calidad a niños y adolescentes, permitiéndoles adaptarse al cambio tan acelerado que hay en la realidad educativa y social. Nuestro trabajo se dirige bajo el principio de que sólo a través de la educación podemos dirigir de manera sistémica el rumbo de nuestra vida, nuestra familia, nuestra sociedad y nuestro país.
                 Está inmerso en nuestra naturaleza de seres humanos crecer en grupo, en comunidad. Es a través del encuentro con el otro que crecemos, que nos hacemos mejores personas y es gracias a esa naturaleza social que podemos mostrar la mejor versión de nosotros mismos en nuestras relaciones interpersonales. ''')
            st.image("Seccioninforme.png")
-           st.title("Agradecimiento a nuestros aliados")
+           st.header("III. Misión y Visión")
+           with st.expander("Mision"):
+               st.write('''Brindar herramientas formativas de desarrollo con principios humanísticos a niños, niñas y jóvenes en condiciones de vulnerabilidad con la participación de actores claves de la educación para ejercer su derecho a una educación de calidad ''')
+           with st.expander("Vision"):
+               st.write(''' Ser una institución líder en México que apoya una educación preventiva, formativa, humanística y de calidad que contribuya al desarrollo social''')
+               
+           st.title("VII. Agradecimiento a nuestros aliados")
            organizacion=Node(id="Organizacion",label="CREmx",size=40,image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfI8vG6dBpG3cSYX5vnU2JA3ssK_zez2lbnw&s",shape="circularImage")
            aliado1=Node(id="aeromexico",label="AeroMéxico",size=25,image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTONSbYr6BG04zowEagQzS6eFvH6dFhrv-lag&s",shape="circularImage")
            aliado2=Node(id="allen",label="Grupo Allen",size=25,image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv8SFGys-1zJihRR-Nu8ru4gjefGBqSoi3KQ&s",shape="circularImage")
@@ -344,10 +364,48 @@ elif st.session_state['selected_option'] == "Cursos y talleres":
                 with s2:
                     st.video("El sueño y el neurodesarrollo Primera Infancia.mp4")
                     st.caption("El sueño y el neurodesarrollo en la Primera Infancia")
-                    
-    
+        #O usando HTML
+        st.subheader("Juegos ludicos para realizar con los niños")
+        html_code = """<iframe src="https://www.funbrain.com/" width="800" height="600"></iframe>"""
+        st.components.v1.html(html_code, height=600)
         
-
+        
+elif st.session_state['selected_option'] == "Herramientas":
+    with st.container():
+        h1,h2=st.columns(2)
+        with h1:
+            video_url="https://youtu.be/uPEGVIESwcU?si=CAkQBWJp14wujz3_"
+            st.video(video_url)
+        with h2:
+            st.markdown('''La concientización, diagnóstico y recursos para neurodivergentes son esenciales para promover la inclusión y el bienestar. La concientización ayuda a desestigmatizar condiciones como el autismo y el TDAH, mientras que un diagnóstico temprano permite intervenciones efectivas. Proveer recursos como programas de apoyo y adaptaciones en entornos educativos y laborales mejora la calidad de vida de las personas neurodivergentes y enriquece a la sociedad, fomentando un entorno más diverso y empático.''')
+            st.markdown('''Aqui hay algunos de los tipos de neurodivergencia: ''')
+            st.markdown(''':round_pushpin: Trastorno del Espectro Autista (TEA)\n\n:round_pushpin: Trastorno por Déficit de Atención e Hiperactividad (TDAH)\n\n:round_pushpin: Dislexia\n\n:round_pushpin: Discalculia\n\n:round_pushpin: Trastorno de la Coordinación del Desarrollo (TDC)''')
+        h3,h4,h5=st.columns(3)
+        with h3:
+            with st.expander("Trastorno por Déficit de Atención e Hiperactividad"):
+                videoTDAH="https://www.youtube.com/watch?v=nMJiS3hLg_A"
+                st.video(videoTDAH)
+                st.markdown('''Se caracteriza por dificultades en la atención, impulsividad y, en algunos casos, hiperactividad. Las personas con TDAH pueden tener problemas para concentrarse y organizar tareas.''')
+                st.markdown('''[Escala de Conner](https://www.adhdme.care/indicator-caars)''')
+        with h4:
+            with st.expander("Trastorno del Espectro Autista"):
+                videoTEA="https://www.youtube.com/watch?v=XhmvcCbd6mI"
+                st.video(videoTEA)
+                st.markdown('''Incluye una variedad de condiciones que afectan la comunicación, la interacción social y el comportamiento. Las personas con TEA pueden tener intereses intensos en temas específicos y presentar una gama de habilidades.''')
+                st.markdown('''[Test AQ](https://espectroautista.info/AQ-es.html)''')
+        with h5:
+            with st.expander("Dislexia"):
+                videoDis="https://www.youtube.com/watch?v=bNjr9Y1k0SI"
+                st.video(videoDis)
+                st.markdown('''Un trastorno del aprendizaje que afecta la habilidad para leer, escribir y, en algunos casos, hablar. Las personas con dislexia pueden tener dificultades para reconocer palabras y comprender textos.''')
+                st.markdown('''[Test Dislexia](https://www.testdyslexia.com/)''')
+        st.subheader("Instituciones que trabajan con neurodivergencias")
+        map_center=[25.66300731045276, -100.35628136471323]
+        m=folium.Map(location=map_center,zoom_start=10)
+        folium.Marker(location=[25.62376297891402, -100.28856467116765],popup="CREE DIF").add_to(m)
+        folium.Marker(location=[25.673218375613313, -100.26305426136842],popup="CAM Especial de Guadalupe").add_to(m)
+        folium.Marker(location=[25.600999275525435, -100.26784531347161],popup="TEAP Centro de Diagnóstico Integral").add_to(m)
+        st.components.v1.html(m._repr_html_(), height=500)
 # Pie de página
 st.markdown("---")
 st.markdown("© 2024 CREmx. Todos los derechos reservados.")
